@@ -1,0 +1,18 @@
+      1        (-> Any boolean?))
+      1   any-wrap/c: Unable to protect opaque value passed as `Any`
+      1       a part of the or/c of
+      1    (assuming the contract is correct)
+      1   at: /home/ben/code/racket/eidetic/benchmarks/rkt/mbta-worst/base/t-graph-types.rkt:16.56
+      1   blaming: /home/ben/code/racket/eidetic/benchmarks/rkt/mbta-worst/base/t-graph-types.rkt
+      1   contract from: (interface for graph?)
+     53 contract-wrapping: arr-i 1
+    291 contract-wrapping: arrow-higher-order 1
+      1 contract-wrapping: arrow-higher-order 2
+     14 contract-wrapping: case-arrow 1
+      1 cpu time: 1143 real time: 1140 gc time: 50
+      1 graph?: contract violation
+      1   in: the 1st argument of
+      1       (or/c
+      1        struct-predicate-procedure?/c
+      1   This warning will become an error in a future release.
+      1   value: #<unweighted-graph>

@@ -21,3 +21,38 @@ Each folder may also contain:
 Folders in this directory contain interesting Racket programs.
 An external program will run these programs with and without space-efficient
  contracts enabled.
+
+
+## Results
+
+Some interesting stats, see `output-2017-04-04/` for raw data.
+
++-----------------+----------+-----------+
+| Benchmark       | CONTRACT | MAX-DEPTH |
++-----------------+----------+-----------+
+| acquire         |     hash |        10 |
+| dungeon         | arr,mvec |         2 |
+| forth-bad       |      arr |         1 |
+| forth-worst     |      arr |        42 |
+| fsm-bad
+| fsm-worst       |     ivec |     +3000 |
+| fsmoo-bad
+| fsmoo-worst
+| gregor          | arr,ivec |         2 |
+| lnm             |   arr-ho |         2 |
+| mbta            |   arr-ho |         2 |
+| morsecode       |          |           |
+| quadBG          |     ivec |        24 |
+| quadMB-bad      |          |           |
+| quadMB-worst    |     ivec |        24 |
+| snake           |          |           |
+| synth
+| synth-worst
+| suffixtree      |          |           |
+| take5           |          |           |
+| tetris          |          |           |
+| zombie          |   arr-ho |        67 |
+| zordoz          |   arr-ho |         2 |
++-----------------+----------+-----------+
+
+

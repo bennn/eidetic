@@ -1,0 +1,7 @@
+     72 contract-wrapping: arr-i 1
+   1252 contract-wrapping: arrow-higher-order 1
+      9 contract-wrapping: arrow-higher-order 2
+     16 contract-wrapping: case-arrow 1
+      4 contract-wrapping: immutable-vectorof-ho 1
+     25 contract-wrapping: promise 1
+      1 cpu time: 300 real time: 301 gc time: 34

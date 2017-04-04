@@ -1,0 +1,4 @@
+     52 contract-wrapping: arr-i 1
+  48826 contract-wrapping: arrow-higher-order 1
+      6 contract-wrapping: case-arrow 1
+      1 cpu time: 65627 real time: 65624 gc time: 87

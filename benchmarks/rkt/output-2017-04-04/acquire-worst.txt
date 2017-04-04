@@ -1,0 +1,14 @@
+     52 contract-wrapping: arr-i 1
+  36160 contract-wrapping: arrow-higher-order 1
+      6 contract-wrapping: case-arrow 1
+    562 contract-wrapping: hash 1
+     10 contract-wrapping: hash 10
+    470 contract-wrapping: hash 2
+     20 contract-wrapping: hash 3
+     20 contract-wrapping: hash 4
+     20 contract-wrapping: hash 5
+     20 contract-wrapping: hash 6
+     20 contract-wrapping: hash 7
+     10 contract-wrapping: hash 8
+     10 contract-wrapping: hash 9
+      1 cpu time: 1390 real time: 1389 gc time: 135

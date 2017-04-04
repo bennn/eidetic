@@ -1,0 +1,5 @@
+     54 contract-wrapping: arr-i 1
+    456 contract-wrapping: arrow-higher-order 1
+     10 contract-wrapping: case-arrow 1
+     25 contract-wrapping: promise 1
+      1 cpu time: 2270 real time: 2269 gc time: 334
