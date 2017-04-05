@@ -34,10 +34,10 @@ Some interesting stats, see `output-2017-04-04/` for raw data.
 | dungeon         | arr,mvec |         2 |
 | forth-bad       |      arr |         1 |
 | forth-worst     |      arr |        42 |
-| fsm-bad
+| fsm-bad         |     ivec |     +3000 |
 | fsm-worst       |     ivec |     +3000 |
-| fsmoo-bad
-| fsmoo-worst
+| fsmoo-bad       |   m/ivec |         3 |
+| fsmoo-worst     |   m/ivec |         3 |
 | gregor          | arr,ivec |         2 |
 | lnm             |   arr-ho |         2 |
 | mbta            |   arr-ho |         2 |
@@ -46,8 +46,8 @@ Some interesting stats, see `output-2017-04-04/` for raw data.
 | quadMB-bad      |          |           |
 | quadMB-worst    |     ivec |        24 |
 | snake           |          |           |
-| synth
-| synth-worst
+| synth           |     ivec |         8 |
+| synth-worst     | arr,ivec |      3,13 |
 | suffixtree      |          |           |
 | take5           |          |           |
 | tetris          |          |           |

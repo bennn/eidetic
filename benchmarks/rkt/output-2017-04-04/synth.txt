@@ -1,0 +1,12 @@
+     52 contract-wrapping: arr-i 1
+    205 contract-wrapping: arrow-higher-order 1
+      6 contract-wrapping: case-arrow 1
+ 891312 contract-wrapping: immutable-vectorof-ho 1
+ 445636 contract-wrapping: immutable-vectorof-ho 2
+ 891265 contract-wrapping: immutable-vectorof-ho 3
+ 445633 contract-wrapping: immutable-vectorof-ho 4
+ 445633 contract-wrapping: immutable-vectorof-ho 5
+      3 contract-wrapping: immutable-vectorof-ho 6
+      1 contract-wrapping: immutable-vectorof-ho 7
+ 445631 contract-wrapping: immutable-vectorof-ho 8
+      1 cpu time: 39686 real time: 55234 gc time: 219
