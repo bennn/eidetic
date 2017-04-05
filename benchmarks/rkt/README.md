@@ -31,14 +31,14 @@ Some interesting stats, see `output-2017-04-04/` for raw data.
 | Benchmark       | CONTRACT | MAX-DEPTH |
 +-----------------+----------+-----------+
 | acquire         |     hash |        10 |
-| dungeon         | arr,mvec |         2 |
+| dungeon         | arr mvec |         2 |
 | forth-bad       |      arr |         1 |
 | forth-worst     |      arr |        42 |
 | fsm-bad         |     ivec |     +3000 |
 | fsm-worst       |     ivec |     +3000 |
 | fsmoo-bad       |   m/ivec |         3 |
 | fsmoo-worst     |   m/ivec |         3 |
-| gregor          | arr,ivec |         2 |
+| gregor          | arr ivec |         2 |
 | lnm             |   arr-ho |         2 |
 | mbta            |   arr-ho |         2 |
 | morsecode       |          |           |
@@ -47,12 +47,11 @@ Some interesting stats, see `output-2017-04-04/` for raw data.
 | quadMB-worst    |     ivec |        24 |
 | snake           |          |           |
 | synth           |     ivec |         8 |
-| synth-worst     | arr,ivec |      3,13 |
+| synth-worst     | arr ivec |      3 13 |
 | suffixtree      |          |           |
 | take5           |          |           |
 | tetris          |          |           |
 | zombie          |   arr-ho |        67 |
 | zordoz          |   arr-ho |         2 |
 +-----------------+----------+-----------+
-
 
