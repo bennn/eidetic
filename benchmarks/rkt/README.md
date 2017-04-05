@@ -27,6 +27,7 @@ An external program will run these programs with and without space-efficient
 
 Some interesting stats, see `output-2017-04-04/` for raw data.
 
+```
 +-----------------+----------+-----------+
 | Benchmark       | CONTRACT | MAX-DEPTH |
 +-----------------+----------+-----------+
@@ -54,4 +55,4 @@ Some interesting stats, see `output-2017-04-04/` for raw data.
 | zombie          |   arr-ho |        67 |
 | zordoz          |   arr-ho |         2 |
 +-----------------+----------+-----------+
-
+```
