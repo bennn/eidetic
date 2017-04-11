@@ -52,6 +52,7 @@ Some interesting stats, see `output-2017-04-04/` for raw data.
 | suffixtree      |          |           |
 | take5           |          |           |
 | tetris          |          |           |
+| trie            | struct-dc|       199 |
 | zombie          |   arr-ho |        67 |
 | zordoz          |   arr-ho |         2 |
 +-----------------+----------+-----------+
