@@ -1,16 +1,16 @@
-9021 contract-wrapping: arr-i 1
-70207 contract-wrapping: arrow-higher-order 1
-2439 contract-wrapping: arrow-higher-order 2
+15657 contract-wrapping: arr-i 1
+158130 contract-wrapping: arrow-higher-order 1
+3125 contract-wrapping: arrow-higher-order 2
   23 contract-wrapping: arrow-higher-order 3
    3 contract-wrapping: arrow-higher-order 4
    8 contract-wrapping: box 1
- 935 contract-wrapping: case-arrow 1
+2120 contract-wrapping: case-arrow 1
   60 contract-wrapping: case-arrow 2
    6 contract-wrapping: case-arrow 4
-41845 contract-wrapping: immutable-vectorof-ho 1
-5391 contract-wrapping: mutable-vector/c-ho 1
+51138 contract-wrapping: immutable-vectorof-ho 1
+29399 contract-wrapping: mutable-vector/c-ho 1
 2500 contract-wrapping: mutable-vector/c-ho 2
 1250 contract-wrapping: mutable-vector/c-ho 3
- 600 contract-wrapping: promise 1
+2775 contract-wrapping: promise 1
   33 contract-wrapping: struct/dc 1
    3 contract-wrapping: struct/dc 2

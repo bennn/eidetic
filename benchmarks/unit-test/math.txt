@@ -1,0 +1,33 @@
+17927 contract-wrapping: arr-i 1
+122638 contract-wrapping: arrow-higher-order 1
+14204 contract-wrapping: arrow-higher-order 2
+2619 contract-wrapping: arrow-higher-order 3
+1086 contract-wrapping: arrow-higher-order 4
+ 227 contract-wrapping: arrow-higher-order 5
+11922 contract-wrapping: box 1
+6080 contract-wrapping: box 2
+ 215 contract-wrapping: box 3
+  23 contract-wrapping: box 4
+5425 contract-wrapping: case-arrow 1
+ 336 contract-wrapping: case-arrow 4
+   2 contract-wrapping: hash 1
+96891 contract-wrapping: immutable-vectorof-ho 1
+  16 contract-wrapping: immutable-vectorof-ho 10
+  12 contract-wrapping: immutable-vectorof-ho 11
+  12 contract-wrapping: immutable-vectorof-ho 12
+   5 contract-wrapping: immutable-vectorof-ho 13
+91950 contract-wrapping: immutable-vectorof-ho 2
+2242 contract-wrapping: immutable-vectorof-ho 3
+ 620 contract-wrapping: immutable-vectorof-ho 4
+ 197 contract-wrapping: immutable-vectorof-ho 5
+ 123 contract-wrapping: immutable-vectorof-ho 6
+  69 contract-wrapping: immutable-vectorof-ho 7
+  61 contract-wrapping: immutable-vectorof-ho 8
+  32 contract-wrapping: immutable-vectorof-ho 9
+ 108 contract-wrapping: mutable-vector/c-ho 1
+5432 contract-wrapping: promise 1
+8722 contract-wrapping: struct/dc 1
+6112 contract-wrapping: struct/dc 2
+ 168 contract-wrapping: struct/dc 3
+  23 contract-wrapping: struct/dc 4
+   2 contract-wrapping: unconstrained-domain-> 1

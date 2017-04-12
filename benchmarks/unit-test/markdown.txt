@@ -1,0 +1,28 @@
+   1 Amps and angle encoding.text ...contract-wrapping: arrow-higher-order 2
+   1 Auto links.text ...contract-wrapping: arrow-higher-order 2
+   1 Backslash escapes.text ...contract-wrapping: arrow-higher-order 2
+   1 Blockquotes with code blocks.text ...contract-wrapping: arrow-higher-order 2
+   1 Code Blocks.text ...contract-wrapping: arrow-higher-order 2
+   1 Code Spans.text ...contract-wrapping: arrow-higher-order 2
+   1 Hard-wrapped paragraphs with list-like lines.text ...contract-wrapping: arrow-higher-order 2
+   1 Horizontal rules.text ...contract-wrapping: arrow-higher-order 2
+   1 Images.text ...contract-wrapping: arrow-higher-order 2
+   1 Inline HTML Advanced.text ...contract-wrapping: arrow-higher-order 2
+   1 Inline HTML Simple.text ...contract-wrapping: arrow-higher-order 2
+   1 Inline HTML comments.text ...contract-wrapping: arrow-higher-order 2
+   1 Links, inline style.text ...contract-wrapping: arrow-higher-order 2
+   1 Links, reference style.text ...contract-wrapping: arrow-higher-order 2
+   1 Links, shortcut references.text ...contract-wrapping: arrow-higher-order 2
+   1 Literal quotes in titles.text ...contract-wrapping: arrow-higher-order 2
+   1 Markdown Documentation - Basics.text ...contract-wrapping: arrow-higher-order 2
+   1 Markdown Documentation - Syntax.text ...contract-wrapping: arrow-higher-order 2
+   1 Nested blockquotes.text ...contract-wrapping: arrow-higher-order 2
+   1 Strong and em together.text ...contract-wrapping: arrow-higher-order 2
+   1 Tabs.text ...contract-wrapping: arrow-higher-order 2
+   1 Tidyness.text ...contract-wrapping: arrow-higher-order 2
+ 472 contract-wrapping: arr-i 1
+3933 contract-wrapping: arrow-higher-order 1
+  11 contract-wrapping: arrow-higher-order 2
+  86 contract-wrapping: case-arrow 1
+5445 contract-wrapping: hash 1
+  30 contract-wrapping: promise 1

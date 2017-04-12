@@ -1,0 +1,9 @@
+ 821 contract-wrapping: arr-i 1
+  65 contract-wrapping: arr-i 2
+7082 contract-wrapping: arrow-higher-order 1
+ 155 contract-wrapping: arrow-higher-order 2
+  91 contract-wrapping: case-arrow 1
+  10 contract-wrapping: immutable-vectorof-ho 1
+   5 contract-wrapping: immutable-vectorof-ho 2
+   5 contract-wrapping: mutable-vector/c-ho 1
+  21 contract-wrapping: unconstrained-domain-> 1

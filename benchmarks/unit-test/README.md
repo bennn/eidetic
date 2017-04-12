@@ -9,3 +9,12 @@ Contract-wrapping results from running some libraries unit test suites
 - `plot.txt` : from `PLTSTDERR="error info@contract-wrapping" raco test -c plot/tests`
   - max wraps : 4 (case-arrow, arrow-higher-order)
   - other notes : 16 unique messages, over 120K total
+
+
+Lots of other files from other packages. Interesting ones:
+- frog, arrow-higher-order 3
+- extensible-functions, 2
+- graph, immvec 7
+- math, ivecho 13
+- plot mvecho 3  arr 4
+- retry ... where are these coming from?

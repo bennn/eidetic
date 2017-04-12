@@ -1,0 +1,5 @@
+ 988 contract-wrapping: arr-i 1
+14092 contract-wrapping: arrow-higher-order 1
+   5 contract-wrapping: arrow-higher-order 2
+ 157 contract-wrapping: case-arrow 1
+ 851 contract-wrapping: struct/dc 1

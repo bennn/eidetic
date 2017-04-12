@@ -1,0 +1,5 @@
+2725 contract-wrapping: arr-i 1
+6354 contract-wrapping: arrow-higher-order 1
+   2 contract-wrapping: arrow-higher-order 2
+ 260 contract-wrapping: case-arrow 1
+   8 contract-wrapping: immutable-vectorof-ho 1

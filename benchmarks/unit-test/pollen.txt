@@ -1,0 +1,5 @@
+36116 contract-wrapping: arr-i 1
+132592 contract-wrapping: arrow-higher-order 1
+ 277 contract-wrapping: arrow-higher-order 2
+   4 contract-wrapping: arrow-higher-order 3
+3099 contract-wrapping: case-arrow 1

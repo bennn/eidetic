@@ -1,0 +1,4 @@
+ 398 contract-wrapping: arr-i 1
+1586 contract-wrapping: arrow-higher-order 1
+   2 contract-wrapping: arrow-higher-order 2
+  49 contract-wrapping: case-arrow 1

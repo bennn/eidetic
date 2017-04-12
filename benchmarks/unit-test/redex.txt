@@ -1,0 +1,14 @@
+   1 1 testcontract-wrapping: hash 1
+40517 contract-wrapping: arr-i 1
+501614 contract-wrapping: arrow-higher-order 1
+41612 contract-wrapping: arrow-higher-order 2
+40939 contract-wrapping: arrow-higher-order 3
+13343 contract-wrapping: arrow-higher-order 4
+13305 contract-wrapping: arrow-higher-order 5
+74460 contract-wrapping: case-arrow 1
+26672 contract-wrapping: case-arrow 4
+233307 contract-wrapping: hash 1
+  72 contract-wrapping: immutable-vectorof-ho 1
+17802 contract-wrapping: promise 1
+41863 contract-wrapping: struct/dc 1
+13337 contract-wrapping: struct/dc 2

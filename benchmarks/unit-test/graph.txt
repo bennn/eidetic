@@ -1,0 +1,19 @@
+ 946 contract-wrapping: arr-i 1
+30097 contract-wrapping: arrow-higher-order 1
+6527 contract-wrapping: arrow-higher-order 2
+6490 contract-wrapping: arrow-higher-order 3
+6476 contract-wrapping: arrow-higher-order 4
+20998 contract-wrapping: box 1
+3509 contract-wrapping: box 2
+3495 contract-wrapping: box 3
+3488 contract-wrapping: box 4
+ 248 contract-wrapping: case-arrow 1
+3181 contract-wrapping: immutable-vectorof-ho 1
+3209 contract-wrapping: immutable-vectorof-ho 2
+3016 contract-wrapping: immutable-vectorof-ho 3
+27953 contract-wrapping: immutable-vectorof-ho 4
+7483 contract-wrapping: immutable-vectorof-ho 5
+7483 contract-wrapping: immutable-vectorof-ho 6
+7476 contract-wrapping: immutable-vectorof-ho 7
+17496 contract-wrapping: struct/dc 1
+3502 contract-wrapping: struct/dc 2

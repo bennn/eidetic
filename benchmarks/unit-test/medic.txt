@@ -1,0 +1,6 @@
+4535 contract-wrapping: arr-i 1
+74311 contract-wrapping: arrow-higher-order 1
+  44 contract-wrapping: arrow-higher-order 2
+1080 contract-wrapping: case-arrow 1
+ 216 contract-wrapping: hash 1
+  84 contract-wrapping: promise 1

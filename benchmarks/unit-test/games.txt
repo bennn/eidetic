@@ -1,0 +1,6 @@
+3106 contract-wrapping: arr-i 1
+114783 contract-wrapping: arrow-higher-order 1
+ 422 contract-wrapping: arrow-higher-order 2
+1358 contract-wrapping: case-arrow 1
+  19 contract-wrapping: mutable-vector/c-ho 1
+  75 contract-wrapping: promise 1
