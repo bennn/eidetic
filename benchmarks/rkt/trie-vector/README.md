@@ -1,6 +1,8 @@
 trie-vector
 ===
 
-Like `trie`, but change the `Trie` datatype from a struct to a vector.
+Similar to the `trie` code from John Clements example, but change the
+`Trie` datatype (in the library) from a struct to a vector.
 
-As expected, now getting big wraps on a mutable vector (instead of a struct/dc)
+Original email:
+- https://groups.google.com/d/msg/racket-users/WBPCsdae5fs/J7CIOeV-CQAJ
