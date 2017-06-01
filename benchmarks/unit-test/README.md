@@ -12,9 +12,12 @@ Contract-wrapping results from running some libraries unit test suites
 
 
 Lots of other files from other packages. Interesting ones:
-- frog, arrow-higher-order 3
-- extensible-functions, 2
-- graph, immvec 7
+- (NO, doesn't seem interesting) frog, arrow-higher-order 3
+  - building PRL blog also makes 3
+  - can probably get the 3 into a small exaple?
+  - but probably cannot get more than 3, not in interesting way
+- (NO, wraps maybe in typed racket) extensible-functions, 2
+- (YES) graph, immvec 7
 - math, ivecho 13
 - plot mvecho 3  arr 4
 - retry ... where are these coming from?
