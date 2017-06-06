@@ -1,0 +1,11 @@
+      1    ... [179 additional linked and package directories]
+      1   collection: "pfds"
+      1   context...:
+      1   for module path: pfds/trie
+      1    /home/ben/code/racket/racket-contract/racket/collects
+      1    /home/ben/.racket/development/collects
+      1   in collection directories:
+      1 main.rkt:3:9: collection not found
+      1    [repeats 1 more time]
+      1    show-collection-err
+      1    standard-module-name-resolver

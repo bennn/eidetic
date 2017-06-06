@@ -1,0 +1,19 @@
+      1   context...:
+      1 Gtk initialization failed for display ":0"
+      1    /home/ben/code/racket/eidetic/benchmarks/rkt/plot/main.rkt: [traversing imports]
+      1    /home/ben/code/racket/racket-contract/racket/share/pkgs/gui-lib/mred/main.rkt: [traversing imports]
+      1    /home/ben/code/racket/racket-contract/racket/share/pkgs/gui-lib/mred/mred.rkt: [traversing imports]
+      1    /home/ben/code/racket/racket-contract/racket/share/pkgs/gui-lib/mred/private/kernel.rkt: [traversing imports]
+      1    /home/ben/code/racket/racket-contract/racket/share/pkgs/gui-lib/mred/private/mred.rkt: [traversing imports]
+      1    /home/ben/code/racket/racket-contract/racket/share/pkgs/gui-lib/mred/private/wx/gtk/init.rkt: [traversing imports]
+      1    /home/ben/code/racket/racket-contract/racket/share/pkgs/gui-lib/mred/private/wx/gtk/platform.rkt: [traversing imports]
+      1    /home/ben/code/racket/racket-contract/racket/share/pkgs/gui-lib/mred/private/wx/gtk/queue.rkt: [running body]
+      1    /home/ben/code/racket/racket-contract/racket/share/pkgs/gui-lib/mred/private/wx/platform.rkt: [running body]
+      1    /home/ben/code/racket/racket-contract/racket/share/pkgs/gui-lib/racket/gui/base.rkt: [traversing imports]
+      1    /home/ben/code/racket/racket-contract/racket/share/pkgs/plot-compat/plot/compat.rkt: [traversing imports]
+      1    /home/ben/code/racket/racket-contract/racket/share/pkgs/plot-compat/plot/private/compat.rkt: [traversing imports]
+      1    /home/ben/code/racket/racket-contract/racket/share/pkgs/plot-gui-lib/plot/main.rkt: [traversing imports]
+      1    /home/ben/code/racket/racket-contract/racket/share/pkgs/plot-gui-lib/plot/private/gui/plot2d.rkt: [traversing imports]
+      1    /home/ben/code/racket/racket-contract/racket/share/pkgs/typed-racket-more/typed/mred/mred.rkt: [traversing imports]
+      1    /home/ben/code/racket/racket-contract/racket/share/pkgs/typed-racket-more/typed/racket/gui/base.rkt: [traversing imports]
+      1 Unable to init server: Could not connect: Connection refused

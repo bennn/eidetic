@@ -1,0 +1,2 @@
+      1 cpu time: 830 real time: 828 gc time: 71
+      1 space-efficient-contract-arrow-wrapper-arity: 0
