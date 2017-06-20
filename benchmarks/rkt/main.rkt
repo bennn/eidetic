@@ -8,6 +8,8 @@
 (require racket/contract)
 (provide
   *VERSIONS*
+  get-data-files
+
   (contract-out
    [run-all
     (->* () () #:rest (listof (and/c path-string? directory-exists?)) datatable?)]
@@ -22,11 +24,20 @@
 (require
   pict
   plot/no-gui
-  racket/format)
+  plot/utils
+  racket/format
+  math/statistics)
 
 ;; =============================================================================
 
 (define *VERSIONS* (make-parameter '()))
+
+(define DEFAULT-BM* (map symbol->string '(
+  acquire-worst array forth-bad forth-worst fsm-bad fsmoo-bad fsmoo-worst
+  fsm-worst-case graph gregor-worst jpeg kcfa-worst lnm-worst mbta-worst
+  morsecode-worst quadBG-worst quadMB-bad quadMB-worst snake-worst
+  suffixtree-worst synth synth-worst take5-worst tetris-worst trie-vector
+  zombie-worst zordoz-worst)))
 
 ;; -----------------------------------------------------------------------------
 
@@ -84,13 +95,71 @@
 (define (run-all . dir*)
   (error 'TODO))
 
-(define (plot-data arg*)
-  (error 'TODO))
+(define (get-data-files ctrl-suffix #:experimental exp-suffix* #:benchmark [benchmark-name* DEFAULT-BM*])
+  (datatable
+    (list*
+      (title "benchmark" string?)
+      (title ctrl-suffix runtimes?)
+      (for/list ([exp (in-list exp-suffix*)])
+        (title exp runtimes?)))
+    (for/list ((bm (in-list benchmark-name*)))
+      (list*
+        bm
+        (file->data (format "~a~a" bm ctrl-suffix))
+        (for/list ([exp (in-list exp-suffix*)])
+          (file->data (format "~a~a" bm exp)))))))
+
+(define runtimes?
+  (listof real?))
+
+(define (file->data fn)
+  (with-input-from-file fn
+    (lambda ()
+      (for/list ((ln (in-lines)))
+        (parse-time ln "cpu")))))
+
+(define (parse-time str [kind "cpu"])
+  (define rx (regexp (format "~a time: ([0-9]+) " kind)))
+  (define m (regexp-match rx str))
+  (if m
+    (string->number (cadr m))
+    (raise-user-error 'parse-time str)))
+
+(define (rnd n)
+  (~r n #:precision '(= 2)))
+
+(define (plot-data D)
+  (parameterize ((plot-font-size 7)
+                 (plot-x-ticks no-ticks))
+    (plot-pict
+      (list*
+        (hrule 1)
+        (for/list ([x-min (in-naturals)]
+                   [col-title (in-list (cddr (datatable-title* D)))])
+          (discrete-histogram
+            #:skip 6
+            #:x-min x-min
+            #:color (+ x-min 1)
+            (for/list ([r (in-list (datatable-row* D))])
+              (define name (car r))
+              (define control (cadr r))
+              (define experimental (list-ref r (+ 2 x-min)))
+              (vector name (/ (mean experimental) (mean control)))))))
+      #:title "Overhead of no-proj-list vs. racket-contract"
+      #:y-max 1.5
+      #:width 2000
+      #:x-label "Benchmark"
+      #:y-label "Slowdown factor (e.g. 2 means '2x slower')")))
 
 ;; =============================================================================
 
 (module* main racket/base
-  (require racket/cmdline racket/port (submod ".."))
+  (require
+    racket/contract
+    racket/cmdline
+    racket/port
+    (submod "..")
+    (only-in gm-dls-2017/script/util save-pict))
 
   (define (string->listof-string str)
     (if (eq? #\( (string-ref str 0))
@@ -117,7 +186,16 @@
          (λ () (displayln D)))
        (void)]
       [(plot)
-       (apply plot-data arg*)]
+       (unless ((list/c (and/c path-string? directory-exists?)) arg*)
+         (raise-argument-error 'main "bad input to plot sorry pls read source"))
+       (define D
+         (parameterize ([current-directory (car arg*)])
+           (get-data-files "-6.9.txt" #:experimental '("-rc.txt"))))
+       (define p (plot-data D))
+       (define out "out.png")
+       (save-pict out p)
+       (printf "Saved plot to '~a'~n" out)
+       (void)]
       [(run)
        (run-all arg*)]
       [else
