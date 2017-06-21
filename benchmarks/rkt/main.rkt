@@ -26,6 +26,7 @@
   plot/no-gui
   plot/utils
   racket/format
+  racket/string
   math/statistics)
 
 ;; =============================================================================
@@ -48,10 +49,11 @@
      (if write?
        (writeln (cons 'datatable (cons (datatable-title* D) (datatable-row* D))) port)
        (begin
+         ;; TODO this is not org
          (displayln (org-join (datatable-title* D)) port)
          (displayln (org-sep) port)
          (for ((r (in-list (datatable-row* D))))
-           (displayln (org-join r) port))
+           (displayln (org-join (fixup r)) port))
          (void))))])
 
 (struct title [name ctc]
@@ -63,10 +65,13 @@
        (write (title-name t) port)
        (fprintf port "#<~a:~a>" (title-name t) (title-ctc t))))])
 
+(define (fixup x*)
+  (cons (~a (car x*)) (for/list ((ns (in-list (cdr x*)))) (rnd (mean ns)))))
+
 (define (org-join x*)
   (string-append
     "| "
-    (~a x* #:separator " | ")
+    (string-join (map ~a x*) " | ")
     " |"))
 
 (define (org-sep)
@@ -159,14 +164,19 @@
     racket/cmdline
     racket/port
     (submod "..")
-    (only-in gm-dls-2017/script/util save-pict))
+    (only-in pict pict->bitmap)
+    (only-in racket/class send))
+
+  (define (save-pict fn p)
+    (define bm (pict->bitmap p))
+    (send bm save-file fn 'png))
 
   (define (string->listof-string str)
     (if (eq? #\( (string-ref str 0))
       (with-input-from-string str read)
       (list str)))
 
-  (define (main argv)
+  ;(define (main argv)
     (define mode (box #f))
     (command-line
      #:program "benchmark-run"
@@ -190,14 +200,17 @@
          (raise-argument-error 'main "bad input to plot sorry pls read source"))
        (define D
          (parameterize ([current-directory (car arg*)])
-           (get-data-files "-6.9.txt" #:experimental '("-rc.txt"))))
-       (define p (plot-data D))
-       (define out "out.png")
-       (save-pict out p)
-       (printf "Saved plot to '~a'~n" out)
+           (get-data-files "-6.9.txt" #:experimental '("-rc.txt" "-ls.txt"))))
+       (with-output-to-file "TABLE.org"
+         (λ () (displayln D)))
+       ;(define p (plot-data D))
+       ;(define out "out.png")
+       ;(save-pict out p)
+       ;(printf "Saved plot to '~a'~n" out)
        (void)]
       [(run)
        (run-all arg*)]
       [else
-       (main '#("--help"))])))
-  (main (current-command-line-arguments)))
+       (raise-user-error 'die)
+       #;(main '#("--help"))]))
+  #;(main (current-command-line-arguments)))
