@@ -50,7 +50,7 @@
        (writeln (cons 'datatable (cons (datatable-title* D) (datatable-row* D))) port)
        (begin
          ;; TODO this is not org
-         (displayln (org-join (datatable-title* D)) port)
+         (displayln (org-join (map title-name (datatable-title* D))) port)
          (displayln (org-sep) port)
          (for ((r (in-list (datatable-row* D))))
            (displayln (org-join (fixup r)) port))
@@ -110,9 +110,9 @@
     (for/list ((bm (in-list benchmark-name*)))
       (list*
         bm
-        (file->data (format "~a~a" bm ctrl-suffix))
+        (file->data (format "~a-~a.txt" bm ctrl-suffix))
         (for/list ([exp (in-list exp-suffix*)])
-          (file->data (format "~a~a" bm exp)))))))
+          (file->data (format "~a-~a.txt" bm exp)))))))
 
 (define runtimes?
   (listof real?))
@@ -144,13 +144,15 @@
           (discrete-histogram
             #:skip 6
             #:x-min x-min
+            #:label (~s col-title)
             #:color (+ x-min 1)
             (for/list ([r (in-list (datatable-row* D))])
               (define name (car r))
               (define control (cadr r))
               (define experimental (list-ref r (+ 2 x-min)))
               (vector name (/ (mean experimental) (mean control)))))))
-      #:title "Overhead of no-proj-list vs. racket-contract"
+      #:title "Overhead vs. racket-contract"
+      #:legend-anchor 'top-right
       #:y-max 1.5
       #:width 2000
       #:x-label "Benchmark"
@@ -200,17 +202,17 @@
          (raise-argument-error 'main "bad input to plot sorry pls read source"))
        (define D
          (parameterize ([current-directory (car arg*)])
-           (get-data-files "-6.9.txt" #:experimental '("-rc.txt" "-ls.txt"))))
+           (get-data-files "6.9" #:experimental '("rc" "ls" "ls2"))))
        (with-output-to-file "TABLE.org"
          (λ () (displayln D)))
-       ;(define p (plot-data D))
-       ;(define out "out.png")
-       ;(save-pict out p)
-       ;(printf "Saved plot to '~a'~n" out)
+       (define p (plot-data D))
+       (define out "out.png")
+       (save-pict out p)
+       (printf "Saved plot to '~a'~n" out)
        (void)]
       [(run)
        (run-all arg*)]
       [else
-       (raise-user-error 'die)
+       (raise-user-error 'benchmark-tool "Please supply either the '--collect' '--plot' or '--run' flag on the command line")
        #;(main '#("--help"))]))
   #;(main (current-command-line-arguments)))
