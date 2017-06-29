@@ -55,7 +55,7 @@ Q2. For each benchmark, how many times raised each log?
     done
     ```
 
-### Script to collect logs
+### Script to create logs
 
 ```
     RACOC=raco-contract
