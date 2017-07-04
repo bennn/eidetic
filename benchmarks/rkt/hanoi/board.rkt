@@ -41,7 +41,13 @@
   #:extra-constructor-name make-disk)
 
 (define tower/c
-  (listof disk?))
+  (-> (or/c 'first-disk 'has-disk? 'count-disks 'get-disks)
+      (or/c disk? boolean? natural? (listof disk?))))
+;  (case->
+;    (-> 'first-disk disk?)
+;    (-> 'has-disk? boolean?)
+;    (-> 'count-disks natural?)
+;    (-> 'get-disks (listof disk?))))
 
 (define board/c
   (vectorof tower/c))
@@ -50,10 +56,8 @@
   (< (disk-size d1) (disk-size d2)))
 
 (define (board->disk H i)
-  (define d* (vector-ref H i))
-  (if (null? d*)
-    (raise-arguments-error 'board->disk "(board-has-disk? H i)" "H" H "i" i)
-    (car d*)))
+  (define t (vector-ref H i))
+  (tower->first-disk t))
 
 (define (find-target* H from)
   (define from-size
@@ -76,23 +80,33 @@
         acc))))
 
 (define (board-has-disk? H i)
-  (not (null? (vector-ref H i))))
+  (tower-has-disk? (vector-ref H i)))
 
 (define (board->num-pegs H)
   (vector-length H))
 
 (define (make-board #:disks num-disks #:pegs num-pegs)
-  (define t (make-vector num-pegs '()))
-  (vector-set! t 0 (make-tower num-disks))
-  t)
+  (define H (make-vector num-pegs (make-tower 0)))
+  (vector-set! H 0 (make-tower num-disks))
+  H)
 
 (define (move-disk! H from to)
-  (vector-set! H to (cons (board->disk H from) (vector-ref H to)))
-  (vector-set! H from (cdr (vector-ref H from)))
+  (vector-set! H to (tower-add-disk (vector-ref H to) (board->disk H from)))
+  (vector-set! H from (tower-remove-disk (vector-ref H from)))
   (void))
 
 (define (make-tower num-disks)
-  (build-list num-disks (compose1 make-disk add1)))
+  (disk*->tower (build-list num-disks (compose1 make-disk add1))))
+
+(define (disk*->tower disk*)
+  (define num-disks (length disk*))
+  (lambda (x)
+    (case x
+     ((has-disk?) (not (zero? num-disks)))
+     ((get-disks) disk*)
+     ((count-disks) num-disks)
+     ((first-disk) (car disk*))
+     (else (error 'tower/c)))))
 
 (define (format-board H)
   (define N (board->num-disks H))
@@ -116,8 +130,8 @@
 
 (define (format-tower t W total-num-disks)
   (append
-    (make-list (- total-num-disks (length t)) (format-disk (make-disk 1) W #\|))
-    (for/list ([d (in-list t)])
+    (make-list (- total-num-disks (tower->num-disks t)) (format-disk (make-disk 1) W #\|))
+    (for/list ([d (in-list (tower->disk* t))])
       (format-disk d W))))
 
 (define (format-disk d W [fill-char #\X])
@@ -144,8 +158,23 @@
 (define (board->disk* H)
   (append* (for/list ([t (in-vector H)]) (tower->disk* t))))
 
+(define (tower-has-disk? t)
+  (t 'has-disk?))
+
 (define (tower->disk* t)
-  t)
+  (t 'get-disks))
+
+(define (tower->num-disks t)
+  (t 'count-disks))
+
+(define (tower->first-disk t)
+  (t 'first-disk))
+
+(define (tower-add-disk t d)
+  (disk*->tower (cons d (tower->disk* t))))
+
+(define (tower-remove-disk t)
+  (disk*->tower (cdr (tower->disk* t))))
 
 ;; =============================================================================
 
