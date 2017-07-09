@@ -34,8 +34,8 @@
 (define *VERSIONS* (make-parameter '()))
 
 (define DEFAULT-BM* (map symbol->string '(
-  acquire-worst array forth-bad forth-worst fsm-bad fsmoo-bad fsmoo-worst
-  fsm-worst-case graph gregor-worst jpeg kcfa-worst lnm-worst mbta-worst
+  acquire-worst array combinations forth-bad forth-worst fsm-bad fsmoo-bad fsmoo-worst
+  fsm-worst-case graph gregor-worst hanoi jpeg kcfa-worst lnm-worst mbta-worst
   morsecode-worst quadBG-worst quadMB-bad quadMB-worst snake-worst
   suffixtree-worst synth synth-worst take5-worst tetris-worst trie-vector
   zombie-worst zordoz-worst)))
@@ -75,7 +75,7 @@
     " |"))
 
 (define (org-sep)
-  "+===")
+  "|---")
 
 (define (well-formed-datatable? D)
   (and (datatable? D)
@@ -202,7 +202,7 @@
          (raise-argument-error 'main "bad input to plot sorry pls read source"))
        (define D
          (parameterize ([current-directory (car arg*)])
-           (get-data-files "6.9" #:experimental '("rc" "ls" "ls2"))))
+           (get-data-files "6.9" #:experimental '("rc" "rcold"))))
        (with-output-to-file "TABLE.org"
          (λ () (displayln D)))
        (define p (plot-data D))
