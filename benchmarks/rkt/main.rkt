@@ -49,11 +49,10 @@
      (if write?
        (writeln (cons 'datatable (cons (datatable-title* D) (datatable-row* D))) port)
        (begin
-         ;; TODO this is not org
          (displayln (org-join (map title-name (datatable-title* D))) port)
          (displayln (org-sep) port)
          (for ((r (in-list (datatable-row* D))))
-           (displayln (org-join (fixup r)) port))
+           (displayln (org-join (row->string r)) port))
          (void))))])
 
 (struct title [name ctc]
@@ -65,8 +64,26 @@
        (write (title-name t) port)
        (fprintf port "#<~a:~a>" (title-name t) (title-ctc t))))])
 
-(define (fixup x*)
-  (cons (~a (car x*)) (for/list ((ns (in-list (cdr x*)))) (rnd (mean ns)))))
+(define (row->string x*)
+  (append (list (~a (car x*))) (for/list ((ns (in-list (cdr x*)))) (rnd (mean ns)))
+    (list (bool->string (significant? (ci (cadr x*)) (ci (caddr x*)))))
+  ))
+
+(define (significant? ci0 ci1)
+  (or (< (cdr ci0) (car ci1))
+      (< (cdr ci1) (car ci0))))
+
+(define (bool->string b)
+  (if b "X" ""))
+
+(define (ci x* #:cv [cv 1.96])
+  (define u (mean x*))
+  (define n (length x*))
+  (define s (stddev/mean u x*))
+  (define cv-offset (/ (* cv s) (sqrt n)))
+  (if (negative? cv-offset)
+    (raise-user-error 'confidence-interval "got negative cv offset ~a\n" cv-offset)
+    (cons (- u cv-offset) (+ u cv-offset))))
 
 (define (org-join x*)
   (string-append
@@ -144,14 +161,14 @@
           (discrete-histogram
             #:skip 6
             #:x-min x-min
-            #:label (~s col-title)
+            #:label #f #;(~s col-title)
             #:color (+ x-min 1)
             (for/list ([r (in-list (datatable-row* D))])
               (define name (car r))
               (define control (cadr r))
               (define experimental (list-ref r (+ 2 x-min)))
               (vector name (/ (mean experimental) (mean control)))))))
-      #:title "Overhead vs. racket-contract"
+      #:title "racket-contract vs. fix-leaf-comparison"
       #:legend-anchor 'top-right
       #:y-max 1.5
       #:width 2000
@@ -202,8 +219,8 @@
          (raise-argument-error 'main "bad input to plot sorry pls read source"))
        (define D
          (parameterize ([current-directory (car arg*)])
-           (get-data-files "6.9" #:experimental '("rc" "rcold"))))
-       (with-output-to-file "TABLE.org"
+           (get-data-files "master" #:experimental '("experimental"))))
+       (with-output-to-file "TABLE.org" #:exists 'replace
          (λ () (displayln D)))
        (define p (plot-data D))
        (define out "out.png")
