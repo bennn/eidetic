@@ -151,7 +151,14 @@
   (~r n #:precision '(= 2)))
 
 (define (plot-data D)
-  (parameterize ((plot-font-size 7)
+  (define-values [WIDTH SKIP FONT]
+    (let ([num-columns (length (database-title* D))])
+      (cond
+       [(< nun-columns 4)
+        (values 2000 6 8)]
+       [(< num-columns 10)
+        (values 4000 9 16)])))
+  (parameterize ((plot-font-size FONT)
                  (plot-x-ticks no-ticks))
     (plot-pict
       (list*
@@ -159,19 +166,19 @@
         (for/list ([x-min (in-naturals)]
                    [col-title (in-list (cddr (datatable-title* D)))])
           (discrete-histogram
-            #:skip 6
+            #:skip SKIP
             #:x-min x-min
-            #:label #f #;(~s col-title)
+            #:label (~s col-title)
             #:color (+ x-min 1)
             (for/list ([r (in-list (datatable-row* D))])
               (define name (car r))
               (define control (cadr r))
               (define experimental (list-ref r (+ 2 x-min)))
               (vector name (/ (mean experimental) (mean control)))))))
-      #:title "racket-contract vs. fix-leaf-comparison"
+      #:title "master vs. optimized branches"
       #:legend-anchor 'top-right
-      #:y-max 1.5
-      #:width 2000
+      #:y-max 2.5
+      #:width WIDTH
       #:x-label "Benchmark"
       #:y-label "Slowdown factor (e.g. 2 means '2x slower')")))
 
