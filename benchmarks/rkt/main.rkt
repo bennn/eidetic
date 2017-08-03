@@ -66,7 +66,7 @@
 
 (define (row->string x*)
   (append (list (~a (car x*))) (for/list ((ns (in-list (cdr x*)))) (rnd (mean ns)))
-    (list (bool->string (significant? (ci (cadr x*)) (ci (caddr x*)))))
+    #;(list (bool->string (significant? (ci (cadr x*)) (ci (caddr x*)))))
   ))
 
 (define (significant? ci0 ci1)
@@ -219,7 +219,7 @@
          (raise-argument-error 'main "bad input to plot sorry pls read source"))
        (define D
          (parameterize ([current-directory (car arg*)])
-           (get-data-files "master" #:experimental '("experimental"))))
+           (get-data-files "racket-contract" #:experimental '("box-cache" "poly-cache" "specialized-checking" "mono-cache-specialize" "poly-cache-specialize" "mono-cache-leaf-specific"))))
        (with-output-to-file "TABLE.org" #:exists 'replace
          (λ () (displayln D)))
        (define p (plot-data D))
