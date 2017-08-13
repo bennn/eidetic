@@ -34,9 +34,9 @@
 (define *VERSIONS* (make-parameter '()))
 
 (define DEFAULT-BM* (map symbol->string '(
-  acquire-worst array combinations forth-bad forth-worst fsm-bad fsmoo-bad fsmoo-worst
+  #;acquire-worst array combinations forth-bad forth-worst fsm-bad fsmoo-bad fsmoo-worst
   fsm-worst-case graph gregor-worst hanoi jpeg kcfa-worst lnm-worst mbta-worst
-  morsecode-worst quadBG-worst quadMB-bad quadMB-worst snake-worst
+  morsecode-worst #;quadBG-worst quadMB-bad #;quadMB-worst snake-worst
   suffixtree-worst synth synth-worst take5-worst tetris-worst trie-vector
   zombie-worst zordoz-worst)))
 
@@ -65,9 +65,14 @@
        (fprintf port "#<~a:~a>" (title-name t) (title-ctc t))))])
 
 (define (row->string x*)
-  (append (list (~a (car x*))) (for/list ((ns (in-list (cdr x*)))) (rnd (mean ns)))
+  (append
+    (list (~a (car x*)))
+    (for/list ((ns (in-list (cdr x*))))
+      (define m (mean ns))
+      (if (eqv? m +nan.0)
+        (raise-argument-error 'row->string "mean undefined" x*)
+        (rnd (mean ns))))))
     #;(list (bool->string (significant? (ci (cadr x*)) (ci (caddr x*)))))
-  ))
 
 (define (significant? ci0 ci1)
   (or (< (cdr ci0) (car ci1))
@@ -152,9 +157,9 @@
 
 (define (plot-data D)
   (define-values [WIDTH SKIP FONT]
-    (let ([num-columns (length (database-title* D))])
+    (let ([num-columns (length (datatable-title* D))])
       (cond
-       [(< nun-columns 4)
+       [(< num-columns 4)
         (values 2000 6 8)]
        [(< num-columns 10)
         (values 4000 9 16)])))
@@ -226,7 +231,7 @@
          (raise-argument-error 'main "bad input to plot sorry pls read source"))
        (define D
          (parameterize ([current-directory (car arg*)])
-           (get-data-files "racket-contract" #:experimental '("box-cache" "poly-cache" "specialized-checking" "mono-cache-specialize" "poly-cache-specialize" "mono-cache-leaf-specific"))))
+           (get-data-files "6.10" #:experimental '("master" "se0"))))
        (with-output-to-file "TABLE.org" #:exists 'replace
          (λ () (displayln D)))
        (define p (plot-data D))
