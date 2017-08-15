@@ -7,7 +7,7 @@
 ;; =============================================================================
 
 (define (main)
-  (call-with-input-file* "base/history.txt"
+  (call-with-input-file* "base/history-large.txt"
     (lambda (p)
       (let-values ([(_e _s) (forth-eval* p)]) (void))))
   (void))
