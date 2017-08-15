@@ -33,12 +33,12 @@
 
 (define *VERSIONS* (make-parameter '()))
 
-(define DEFAULT-BM* (map symbol->string '(
-  #;acquire-worst array combinations forth-bad forth-worst fsm-bad fsmoo-bad fsmoo-worst
+(define DEFAULT-BM* (map symbol->string (remove* '(fsmoo-bad fsmoo-worst kcfa-worst) '(
+  acquire-worst array combinations forth-bad forth-worst fsm-bad fsmoo-bad fsmoo-worst
   fsm-worst-case graph gregor-worst hanoi jpeg kcfa-worst lnm-worst mbta-worst
-  morsecode-worst #;quadBG-worst quadMB-bad #;quadMB-worst snake-worst
+  morsecode-worst quadBG-worst quadMB-bad quadMB-worst snake-worst
   suffixtree-worst synth synth-worst take5-worst tetris-worst trie-vector
-  zombie-worst zordoz-worst)))
+  zombie-worst zordoz-worst))))
 
 ;; -----------------------------------------------------------------------------
 
@@ -155,37 +155,64 @@
 (define (rnd n)
   (~r n #:precision '(= 2)))
 
+(define (split-at x* n)
+  (cond
+   [(null? x*)
+    (values '() '())]
+   [(zero? n)
+    (values '() x*)]
+   [else
+    (define-values [a b] (split-at (cdr x*) (- n 1)))
+    (values (cons (car x*) a) b)]))
+
 (define (plot-data D)
+  (define num-columns (length (datatable-title* D)))
+  (define Y-MAX (box 1))
   (define-values [WIDTH SKIP FONT]
-    (let ([num-columns (length (datatable-title* D))])
-      (cond
-       [(< num-columns 4)
-        (values 2000 6 8)]
-       [(< num-columns 10)
-        (values 4000 9 16)])))
-  (parameterize ((plot-font-size FONT)
-                 (plot-x-ticks no-ticks))
-    (plot-pict
-      (list*
-        (hrule 1)
-        (for/list ([x-min (in-naturals)]
-                   [col-title (in-list (cddr (datatable-title* D)))])
-          (discrete-histogram
-            #:skip SKIP
-            #:x-min x-min
-            #:label (~s col-title)
-            #:color (+ x-min 1)
-            (for/list ([r (in-list (datatable-row* D))])
-              (define name (car r))
-              (define control (cadr r))
-              (define experimental (list-ref r (+ 2 x-min)))
-              (vector name (/ (mean experimental) (mean control)))))))
-      #:title "master vs. optimized branches"
-      #:legend-anchor 'top-right
-      #:y-max 2.5
-      #:width WIDTH
-      #:x-label "Benchmark"
-      #:y-label "Slowdown factor (e.g. 2 means '2x slower')")))
+    (cond
+     [(< num-columns 4)
+      (values 2000 6 8)]
+     [(< num-columns 10)
+      (values 4000 9 16)]
+     [(< num-columns 20)
+      (values 2000 18 20)]
+     [else
+      (raise-user-error 'plot-data "TOO MANY COLUMNS, got ~a" num-columns)]))
+  (define plot*
+    (parameterize ((plot-font-size FONT)
+                   (plot-x-ticks no-ticks))
+      (let loop ([r* (datatable-row* D)])
+        (if (null? r*)
+          '()
+          (let-values (((fst rst) (split-at r* 4)))
+            (cons
+              (plot-pict
+                (list*
+                  (hrule 1)
+                  (for/list ([x-min (in-naturals)]
+                             [col-title (in-list (cddr (datatable-title* D)))])
+                    (discrete-histogram
+                      #:skip SKIP
+                      #:x-min x-min
+                      #:label (~s col-title)
+                      #:color (->pen-color (+ x-min 1))
+                      (for/list ([r (in-list fst)])
+                        (define name (car r))
+                        (define control (cadr r))
+                        (define experimental (list-ref r (+ 2 x-min)))
+                        (define y (/ (mean experimental) (mean control)))
+                        (when (< (unbox Y-MAX) y)
+                          (set-box! Y-MAX y))
+                        (vector name y)))))
+                #:title "6.10 vs. optimized branches"
+                #:legend-anchor 'top-right
+                #:x-max (+ num-columns (* num-columns 5))
+                #:y-max (unbox Y-MAX)
+                #:width WIDTH
+                #:x-label "Benchmark"
+                #:y-label "Slowdown factor (e.g. 2 means '2x slower')")
+              (loop rst)))))))
+    (apply vl-append 20 plot*))
 
 ;; =============================================================================
 
@@ -231,7 +258,7 @@
          (raise-argument-error 'main "bad input to plot sorry pls read source"))
        (define D
          (parameterize ([current-directory (car arg*)])
-           (get-data-files "6.10" #:experimental '("master" "se0"))))
+           (get-data-files "6.10" #:experimental '("master" "base" "mono" "poly" "spec" "anyc" "spec-anyc" "mono-anyc" "poly-anyc" "mono-spec" "poly-spec" "mono-spec-anyc" "poly-spec-anyc"))))
        (with-output-to-file "TABLE.org" #:exists 'replace
          (λ () (displayln D)))
        (define p (plot-data D))
