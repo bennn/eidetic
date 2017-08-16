@@ -33,7 +33,7 @@
 
 (define *VERSIONS* (make-parameter '()))
 
-(define DEFAULT-BM* (map symbol->string (remove* '(fsmoo-bad fsmoo-worst kcfa-worst) '(
+(define DEFAULT-BM* (map symbol->string '(forth-bad) #;(remove* '(fsmoo-bad fsmoo-worst kcfa-worst) '(
   acquire-worst array combinations forth-bad forth-worst fsm-bad fsmoo-bad fsmoo-worst
   fsm-worst-case graph gregor-worst hanoi jpeg kcfa-worst lnm-worst mbta-worst
   morsecode-worst quadBG-worst quadMB-bad quadMB-worst snake-worst
@@ -167,11 +167,11 @@
 
 (define (plot-data D)
   (define num-columns (length (datatable-title* D)))
-  (define Y-MAX (box 1))
+  (define Y-MAX (box 2))
   (define-values [WIDTH SKIP FONT]
     (cond
      [(< num-columns 4)
-      (values 2000 6 8)]
+      (values 400 2 2)]
      [(< num-columns 10)
       (values 4000 9 16)]
      [(< num-columns 20)
