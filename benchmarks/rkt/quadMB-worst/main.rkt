@@ -38,5 +38,6 @@
     (begin
       (define to (typeset (quick-sample)))
       (send (new pdf-renderer%) render-to-file to "./output.pdf")
-      (void))))
+      (void)))
+  (delete-file "./output.pdf"))
 ;; 65,000 on heart-of-darkness
