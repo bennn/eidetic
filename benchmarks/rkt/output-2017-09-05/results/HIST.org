@@ -1,0 +1,30 @@
+| benchmark        | num. messages |
+|------------------+---------------|
+| acquire-worst    |             0 |
+| array            |           470 |
+| combinations     |       1627920 |
+| dungeon-worst    |         11814 |
+| forth-bad        |             0 |
+| forth-worst      |          1610 |
+| fsm-bad          |         30000 |
+| fsm-worst        |         30000 |
+| graph            |         40311 |
+| gregor-worst     |         87002 |
+| hanoi            |       4776952 |
+| jpeg             |        223751 |
+| lnm-worst        |             6 |
+| mbta-worst       |             0 |
+| morsecode-worst  |             0 |
+| quadBG-worst     |         34920 |
+| quadMB-bad       |             0 |
+| quadMB-worst     |         34761 |
+| snake-worst      |             0 |
+| suffixtree-worst |             0 |
+| synth            |       8021406 |
+| synth-worst      |      21529121 |
+| take5-worst      |             0 |
+| tetris-worst     |             0 |
+| trie             |             0 |
+| trie-vector      |         49510 |
+| zombie-worst     |        154800 |
+| zordoz-worst     |           218 |
