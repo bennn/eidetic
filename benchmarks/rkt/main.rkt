@@ -33,7 +33,7 @@
 
 (define *VERSIONS* (make-parameter '()))
 
-(define DEFAULT-BM* (map symbol->string '(forth-bad) #;(remove* '(fsmoo-bad fsmoo-worst kcfa-worst) '(
+(define DEFAULT-BM* (map symbol->string (remove* '(fsmoo-bad fsmoo-worst kcfa-worst) '(
   acquire-worst array combinations forth-bad forth-worst fsm-bad fsmoo-bad fsmoo-worst
   fsm-worst-case graph gregor-worst hanoi jpeg kcfa-worst lnm-worst mbta-worst
   morsecode-worst quadBG-worst quadMB-bad quadMB-worst snake-worst
@@ -71,7 +71,7 @@
       (define m (mean ns))
       (if (eqv? m +nan.0)
         (raise-argument-error 'row->string "mean undefined" x*)
-        (rnd (mean ns))))))
+        (format "~a (~a)" (rnd (mean ns)) (rnd (stddev ns)))))))
     #;(list (bool->string (significant? (ci (cadr x*)) (ci (caddr x*)))))
 
 (define (significant? ci0 ci1)
@@ -258,7 +258,7 @@
          (raise-argument-error 'main "bad input to plot sorry pls read source"))
        (define D
          (parameterize ([current-directory (car arg*)])
-           (get-data-files "6.10" #:experimental '("master" "base" "mono" "poly" "spec" "anyc" "spec-anyc" "mono-anyc" "poly-anyc" "mono-spec" "poly-spec" "mono-spec-anyc" "poly-spec-anyc"))))
+           (get-data-files "6.10" #:experimental '("base" "base-no-gunk" "base-enter-s-e-on-10"))))
        (with-output-to-file "TABLE.org" #:exists 'replace
          (λ () (displayln D)))
        (define p (plot-data D))
