@@ -34,7 +34,7 @@
 (define *VERSIONS* (make-parameter '()))
 
 (define DEFAULT-BM* (map symbol->string (remove* '(fsmoo-bad fsmoo-worst kcfa-worst) '(
-  acquire-worst array combinations forth-bad forth-worst fsm-bad fsmoo-bad fsmoo-worst
+  acquire-worst array combinations dungeon-worst forth-bad forth-worst fsm-bad fsmoo-bad fsmoo-worst
   fsm-worst-case graph gregor-worst hanoi jpeg kcfa-worst lnm-worst mbta-worst
   morsecode-worst quadBG-worst quadMB-bad quadMB-worst snake-worst
   suffixtree-worst synth synth-worst take5-worst tetris-worst trie-vector
@@ -173,9 +173,9 @@
      [(< num-columns 4)
       (values 400 2 2)]
      [(< num-columns 10)
-      (values 4000 9 16)]
+      (values 600 4 12)]
      [(< num-columns 20)
-      (values 2000 18 20)]
+      (values 600 18 20)]
      [else
       (raise-user-error 'plot-data "TOO MANY COLUMNS, got ~a" num-columns)]))
   (define plot*
@@ -258,7 +258,7 @@
          (raise-argument-error 'main "bad input to plot sorry pls read source"))
        (define D
          (parameterize ([current-directory (car arg*)])
-           (get-data-files "6.10" #:experimental '("base" "base-no-gunk" "base-enter-s-e-on-10"))))
+           (get-data-files "6.10" #:experimental '("base" "more-sharing"))))
        (with-output-to-file "TABLE.org" #:exists 'replace
          (λ () (displayln D)))
        (define p (plot-data D))
