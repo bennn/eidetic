@@ -173,9 +173,9 @@
      [(< num-columns 4)
       (values 400 2 2)]
      [(< num-columns 10)
-      (values 600 4 12)]
+      (values 600 10 14)]
      [(< num-columns 20)
-      (values 600 18 20)]
+      (values 600 20 24)]
      [else
       (raise-user-error 'plot-data "TOO MANY COLUMNS, got ~a" num-columns)]))
   (define plot*
@@ -258,7 +258,7 @@
          (raise-argument-error 'main "bad input to plot sorry pls read source"))
        (define D
          (parameterize ([current-directory (car arg*)])
-           (get-data-files "6.10" #:experimental '("base" "more-sharing"))))
+           (get-data-files "6.10" #:experimental '("base" "space-efficient-more-sharing" "base-enter-s-e-on-10" "new-proj-after-10"))))
        (with-output-to-file "TABLE.org" #:exists 'replace
          (λ () (displayln D)))
        (define p (plot-data D))
