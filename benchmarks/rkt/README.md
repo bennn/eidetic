@@ -3,6 +3,17 @@ rkt
 
 Simple benchmarks for space-efficient contracts.
 
+## TODO 2017-12-14
+
+- get Chaperones paper benchmarks (or, the modern version of such benchmarks)
+  - render the reference, run DrRacket, ....
+- try calibrating the inputs to the current benchmarks
+  - as small as possible
+  - systematic, large/small
+- button to "run all" quickly
+  - just a sampling of fast + slow configurations
+  - later we'll go back and run-all or sample
+
 
 ## Overview
 

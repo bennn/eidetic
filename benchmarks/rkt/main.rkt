@@ -165,17 +165,21 @@
     (define-values [a b] (split-at (cdr x*) (- n 1)))
     (values (cons (car x*) a) b)]))
 
+(define NUM-PER-PLOT 9)
+
 (define (plot-data D)
   (define num-columns (length (datatable-title* D)))
   (define Y-MAX (box 2))
   (define-values [WIDTH SKIP FONT]
-    (cond
-     [(< num-columns 4)
-      (values 400 2 2)]
+    (values 1200 2 16)
+    ;; TODO pick good values automatically
+    #;(cond
+     [(< num-columns NUM-PER-PLOT)
+      (values 1200 2 16)]
      [(< num-columns 10)
       (values 600 10 14)]
      [(< num-columns 20)
-      (values 600 20 24)]
+      (values 600 10 14)]
      [else
       (raise-user-error 'plot-data "TOO MANY COLUMNS, got ~a" num-columns)]))
   (define plot*
@@ -184,18 +188,18 @@
       (let loop ([r* (datatable-row* D)])
         (if (null? r*)
           '()
-          (let-values (((fst rst) (split-at r* 4)))
+          (let-values (((fst rst) (split-at r* NUM-PER-PLOT)))
             (cons
               (plot-pict
                 (list*
                   (hrule 1)
                   (for/list ([x-min (in-naturals)]
-                             [col-title (in-list (cddr (datatable-title* D)))])
+                             [col-title (in-list (cddr (datatable-title* D)))]) ;; ??? is this correct?
                     (discrete-histogram
                       #:skip SKIP
                       #:x-min x-min
-                      #:label (~s col-title)
-                      #:color (->pen-color (+ x-min 1))
+                      #:label #f #;(~s col-title)
+                      #:color (->brush-color (+ x-min 1))
                       (for/list ([r (in-list fst)])
                         (define name (car r))
                         (define control (cadr r))
@@ -204,7 +208,7 @@
                         (when (< (unbox Y-MAX) y)
                           (set-box! Y-MAX y))
                         (vector name y)))))
-                #:title "6.10 vs. optimized branches"
+                #:title "racket @ 2960661 vs. racket-contract @ f4a399f"
                 #:legend-anchor 'top-right
                 #:x-max (+ num-columns (* num-columns 5))
                 #:y-max (unbox Y-MAX)
@@ -258,7 +262,7 @@
          (raise-argument-error 'main "bad input to plot sorry pls read source"))
        (define D
          (parameterize ([current-directory (car arg*)])
-           (get-data-files "6.10" #:experimental '("base" "space-efficient-more-sharing" "base-enter-s-e-on-10" "new-proj-after-10"))))
+           (get-data-files "head" #:experimental '("master"))))
        (with-output-to-file "TABLE.org" #:exists 'replace
          (λ () (displayln D)))
        (define p (plot-data D))
