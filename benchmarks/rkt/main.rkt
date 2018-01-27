@@ -33,7 +33,7 @@
 
 (define *VERSIONS* (make-parameter '()))
 
-(define DEFAULT-BM* (map symbol->string (remove* '(fsmoo-bad fsmoo-worst kcfa-worst) '(
+(define DEFAULT-BM* (map symbol->string (remove* '(fsmoo-worst fsmoo-bad kcfa-worst) '(
   acquire-worst array combinations dungeon-worst forth-bad forth-worst fsm-bad fsmoo-bad fsmoo-worst
   fsm-worst-case graph gregor-worst hanoi jpeg kcfa-worst lnm-worst mbta-worst
   morsecode-worst quadBG-worst quadMB-bad quadMB-worst snake-worst
@@ -171,7 +171,7 @@
   (define num-columns (length (datatable-title* D)))
   (define Y-MAX (box 2))
   (define-values [WIDTH SKIP FONT]
-    (values 1200 2 16)
+    (values 1200 2.6 16)
     ;; TODO pick good values automatically
     #;(cond
      [(< num-columns NUM-PER-PLOT)
@@ -208,7 +208,7 @@
                         (when (< (unbox Y-MAX) y)
                           (set-box! Y-MAX y))
                         (vector name y)))))
-                #:title "racket @ 2960661 vs. racket-contract @ f4a399f"
+                #:title "racket vs. racket-contract"
                 #:legend-anchor 'top-right
                 #:x-max (+ num-columns (* num-columns 5))
                 #:y-max (unbox Y-MAX)
@@ -238,10 +238,11 @@
       (with-input-from-string str read)
       (list str)))
 
-  ;(define (main argv)
+  (define (main argv)
     (define mode (box #f))
     (command-line
      #:program "benchmark-run"
+     #:argv argv
      #:once-any
      [("-c" "--collect") ", create a datatable" (set-box! mode 'collect)]
      [("-p" "--plot") "Plot a datatable" (set-box! mode 'plot)]
@@ -262,7 +263,7 @@
          (raise-argument-error 'main "bad input to plot sorry pls read source"))
        (define D
          (parameterize ([current-directory (car arg*)])
-           (get-data-files "head" #:experimental '("master"))))
+           (get-data-files "head" #:experimental '("november" "master"))))
        (with-output-to-file "TABLE.org" #:exists 'replace
          (λ () (displayln D)))
        (define p (plot-data D))
@@ -273,6 +274,5 @@
       [(run)
        (run-all arg*)]
       [else
-       (raise-user-error 'benchmark-tool "Please supply either the '--collect' '--plot' or '--run' flag on the command line")
-       #;(main '#("--help"))]))
-  #;(main (current-command-line-arguments)))
+       (main '#("--help"))])))
+  (main (current-command-line-arguments)))
