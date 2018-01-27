@@ -1,6 +1,7 @@
 typecheck
 ===
 
+TODO can we run this with PLT_TR_CONTRACTS enabled?
 
 
 History
