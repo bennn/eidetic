@@ -1,0 +1,4 @@
+cpu time: 8388 real time: 8383 gc time: 132
+cpu time: 8156 real time: 8152 gc time: 116
+cpu time: 8200 real time: 8195 gc time: 120
+cpu time: 8404 real time: 8397 gc time: 124

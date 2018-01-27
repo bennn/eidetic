@@ -1,0 +1,4 @@
+cpu time: 680 real time: 682 gc time: 64
+cpu time: 708 real time: 705 gc time: 80
+cpu time: 692 real time: 692 gc time: 80
+cpu time: 680 real time: 683 gc time: 60
