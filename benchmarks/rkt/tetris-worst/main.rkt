@@ -39,4 +39,12 @@
     (error "bad input")))
 
 ;; (time (main SMALL_TEST)) ; 0ms
-(time (main LARGE_TEST)) ; 417ms
+;; (time (main LARGE_TEST)) ; 417ms
+
+;; 2018-01-30: originally (time (main LARGE_TEST))
+(for ((LOOP (in-list '(1 10 100 500))))
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (displayln LOOP)
+  (time (begin (for ((_ (in-range LOOP))) (main SMALL_TEST)) (collect-garbage 'major))))

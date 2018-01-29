@@ -31,4 +31,9 @@
           (send p death-birth s)
           (cons (relative-average pp r) (evolve (- c 1) s r))])))
 
-(time (main))
+(for ((LOOP (in-list '(1 10 100 500))))
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (displayln LOOP)
+  (time (begin (for ((_ (in-range LOOP))) (main)) (collect-garbage 'major))))

@@ -35,7 +35,6 @@
   (send dealer play-game))
 
 (define PLAYERS 10)
-(define ITERS PLAYERS)
 
 (module+ test
   (unless (equal? (main PLAYERS)
@@ -43,5 +42,11 @@
                     ((1 0) (2 0) (3 0) (6 0) (7 0) (8 0) (0 56) (4 80) (9 80) (5 120))))
     (raise-user-error 'take5 "TEST FAILURE")))
 
-(module+ main
-  (time (for ([n (in-range ITERS)]) (main PLAYERS))))
+;; 2018-01-30: originally (time (for ([n (in-range ITERS)]) (main PLAYERS)))
+
+(for ((LOOP (in-list '(1 10 100 500))))
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (displayln LOOP)
+  (time (begin (for ((_ (in-range LOOP))) (main PLAYERS)) (collect-garbage 'major))))

@@ -46,4 +46,11 @@
     (void)))
 
 ;(time (main allwords)) ;; 68,000ms
-(time (main words-small)) ;; 200ms
+;(time (main words-small)) ;; 200ms
+
+(for ((LOOP (in-list '(1 10 100 500))))
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (displayln LOOP)
+  (time (begin (for ((_ (in-range LOOP))) (main words-small)) (collect-garbage 'major))))

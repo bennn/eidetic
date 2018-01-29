@@ -23,6 +23,14 @@
 (define-syntax-rule (main test)
   (with-output-to-file "/dev/null" test #:exists 'append))
 
-(time (main self-test)) ; 1330ms
+;(time (main self-test)) ; 1330ms
 ;(time (main small-test)) ;
 ;(time (main large-test)) ;
+
+;; 2018-01-30: originally (time (main self-test))
+(for ((LOOP (in-list '(1 10 100 500))))
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (displayln LOOP)
+  (time (begin (for ((_ (in-range LOOP))) (main self-test)) (collect-garbage 'major))))

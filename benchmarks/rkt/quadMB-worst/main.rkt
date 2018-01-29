@@ -32,12 +32,15 @@
 
 ;; =============================================================================
 
-;; 2400ms
-(parameterize ([world:quality-default world:draft-quality])
-  (time
-    (begin
-      (define to (typeset (quick-sample)))
-      (send (new pdf-renderer%) render-to-file to "./output.pdf")
-      (void)))
-  (delete-file "./output.pdf"))
-;; 65,000 on heart-of-darkness
+(define (main)
+  (parameterize ([world:quality-default world:draft-quality])
+    (define to (typeset (quick-sample)))
+    (send (new pdf-renderer%) render-to-file to "./output.pdf")
+    (delete-file "./output.pdf")))
+
+(for ((LOOP (in-list '(1 10 100 500))))
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (displayln LOOP)
+  (time (begin (for ((_ (in-range LOOP))) (main)) (collect-garbage 'major))))

@@ -18,6 +18,14 @@
     (longest-common-substring a b))
   (void))
 
-(time (main SMALL_TEST)) ; 110ms
+;(time (main SMALL_TEST)) ; 110ms
 ;(time (main LARGE_TEST)) ; 1900ms
 ;(time (main KCFA_TYPED)) ; 16235ms
+
+;; 2018-01-30: originally (time (main SMALL_TEST))
+(for ((LOOP (in-list '(1 10 100 500))))
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (displayln LOOP)
+  (time (begin (for ((_ (in-range LOOP))) (main SMALL_TEST)) (collect-garbage 'major))))

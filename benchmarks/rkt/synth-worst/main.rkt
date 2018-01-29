@@ -105,4 +105,11 @@
   ;; (small-test) ;; 7ms
   (void))
 
-(time (main))
+;;(time (main))
+
+(for ((LOOP (in-list '(1 10 100 500))))
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (displayln LOOP)
+  (time (begin (for ((_ (in-range LOOP))) (main)) (collect-garbage 'major))))

@@ -53,6 +53,14 @@
     (analyze e)))
 
 ;;(time (main 5 standard-example)) ;; 0ms
-(time (main 2 mid-test)) ;; 10 seconds
+;;(time (main 2 mid-test)) ;; 10 seconds
 ;; (time (main 1 ianj)) ;; 20 seconds
 ;; (time (main 2 ianj)) ;; 47 seconds
+
+;; 2018-01-30: original was (time (main 2 mid-test))
+(for ((LOOP (in-list '(1 2 10 100))))
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (displayln LOOP)
+  (time (begin (main LOOP mid-test) (collect-garbage 'major))))

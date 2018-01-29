@@ -171,4 +171,13 @@
     (test-difference dates)))
 
 ;(time (main 10 #f)) ; 90ms
-(time (main 10 #t)) ; 240ms
+
+;(time (main 10 #t)) ; 240ms
+
+;; 2018-01-30: original was (main 10 #t)
+(for ((LOOP (in-list '(1 10 100 500))))
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (collect-garbage 'major)
+  (displayln LOOP)
+  (time (begin (main LOOP #t) (collect-garbage 'major))))
