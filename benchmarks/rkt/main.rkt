@@ -171,7 +171,7 @@
   (define num-columns (length (datatable-title* D)))
   (define Y-MAX (box 2))
   (define-values [WIDTH SKIP FONT]
-    (values 1200 2.6 16)
+    (values 1200 2 16)
     ;; TODO pick good values automatically
     #;(cond
      [(< num-columns NUM-PER-PLOT)
@@ -263,7 +263,7 @@
          (raise-argument-error 'main "bad input to plot sorry pls read source"))
        (define D
          (parameterize ([current-directory (car arg*)])
-           (get-data-files "head" #:experimental '("november" "master"))))
+           (get-data-files "6.12" #:experimental '("master"))))
        (with-output-to-file "TABLE.org" #:exists 'replace
          (λ () (displayln D)))
        (define p (plot-data D))
