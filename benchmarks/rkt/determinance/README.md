@@ -3,7 +3,14 @@ determinance
 
 Logic / Relational programming benchmark.
 
+This benchmark runs extremely slower after 6.10.1,
+ because of some commit that happened before:
 
+```
+  404539c894fe0b63323b222e3a5eb55fc6782f08
+```
+
+(The commit just after that one slowed down `fsmoo`; it's a rough time.)
 
 
 History
