@@ -1,6 +1,6 @@
 #lang racket
 
-(require pfds/trie)
+(require "trie.rkt")
 
 (define ITERS 100)
 
