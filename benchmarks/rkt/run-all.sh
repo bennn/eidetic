@@ -1,7 +1,7 @@
 ITERS=20
-#  fsmoo-bad fsmoo-worst kcfa-worst
-OUTPUT="output-2018-01-26"
-for BM in acquire-worst array combinations dungeon-worst forth-bad forth-worst fsm-bad fsm-worst-case graph gregor-worst hanoi jpeg lnm-worst mbta-worst morsecode-worst quadBG-worst quadMB-bad quadMB-worst snake-worst suffixtree-worst synth synth-worst take5-worst tetris-worst trie trie-vector zombie-worst zordoz-worst; do
+#  fsmoo-bad fsmoo-worst
+OUTPUT="output/2018-01-26"
+for BM in acquire-worst array combinations dungeon-worst forth-bad forth-worst fsm-bad fsm-worst-case graph gregor-worst hanoi jpeg kcfa-worst lnm-worst mbta-worst morsecode-worst quadBG-worst quadMB-bad quadMB-worst snake-worst suffixtree-worst synth synth-worst take5-worst tetris-worst trie trie-vector zombie-worst zordoz-worst; do
   cd ${BM} && \
   for R in "6.12"; do
     # run a Racket release
