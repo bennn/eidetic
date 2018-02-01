@@ -1,16 +1,12 @@
 determinance
 ===
 
-Logic / Relational programming benchmark.
+Logic / Relational programming.
 
-This benchmark runs extremely slower after 6.10.1,
- because of some commit that happened before:
-
-```
-  404539c894fe0b63323b222e3a5eb55fc6782f08
-```
-
-(The commit just after that one slowed down `fsmoo`; it's a rough time.)
+This program runs extremely slower after 6.11 due to a fix in Typed Racket's
+ `or/c` contracts.
+Previous versions would optimize `(U Null X)` to `any/c` no matter what `X` was.
+Version 6.12 does NOT, correctly, but doing so slows down this program.
 
 
 History

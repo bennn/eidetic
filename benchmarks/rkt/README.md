@@ -6,7 +6,6 @@ Simple benchmarks for space-efficient contracts.
 ## TODO 2018-02-01
 - investigate trie-vector
 - plot LOOPS output
-- plot VERSIONS output
 - ???
 
 ## TODO 2018-01-30
