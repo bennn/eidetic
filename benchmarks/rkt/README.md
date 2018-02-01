@@ -7,9 +7,6 @@ Simple benchmarks for space-efficient contracts.
 - investigate trie-vector
 - ???
 
-## TODO 2018-01-30
-- get all space-efficient programs from prior work: Herman, Greenberg, etc.
-
 ## TODO 2018-01-20
 - fsmoo definitely a problem, it's SLOW and slower on racket-contract
 
