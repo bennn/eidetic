@@ -1,0 +1,21 @@
+1
+cpu time: 2012 real time: 2014 gc time: 132
+10
+1
+cpu time: 2144 real time: 2144 gc time: 176
+10
+1
+cpu time: 2040 real time: 2039 gc time: 164
+10
+1
+cpu time: 2112 real time: 2113 gc time: 176
+10
+1
+cpu time: 2040 real time: 2040 gc time: 156
+10
+1
+cpu time: 2044 real time: 2042 gc time: 160
+10
+1
+cpu time: 2036 real time: 2034 gc time: 164
+10

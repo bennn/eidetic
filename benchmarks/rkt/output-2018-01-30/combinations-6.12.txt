@@ -1,0 +1,57 @@
+1
+cpu time: 2752 real time: 2750 gc time: 24
+10
+cpu time: 27728 real time: 27711 gc time: 348
+100
+cpu time: 278704 real time: 278517 gc time: 3984
+500
+cpu time: 1388408 real time: 1387454 gc time: 19420
+1
+cpu time: 2924 real time: 2925 gc time: 36
+10
+cpu time: 29504 real time: 29486 gc time: 436
+100
+cpu time: 295316 real time: 295107 gc time: 4396
+500
+1
+cpu time: 2932 real time: 2932 gc time: 28
+10
+cpu time: 29252 real time: 29234 gc time: 320
+100
+cpu time: 292736 real time: 292539 gc time: 4032
+1
+cpu time: 2828 real time: 2825 gc time: 64
+10
+cpu time: 28296 real time: 28277 gc time: 464
+100
+cpu time: 284260 real time: 284069 gc time: 3260
+1
+cpu time: 2848 real time: 2845 gc time: 32
+10
+cpu time: 28284 real time: 28264 gc time: 348
+100
+cpu time: 282484 real time: 282298 gc time: 3800
+1
+cpu time: 2864 real time: 2863 gc time: 20
+10
+cpu time: 28940 real time: 28921 gc time: 392
+100
+cpu time: 289060 real time: 288863 gc time: 3612
+1
+cpu time: 2904 real time: 2900 gc time: 36
+10
+cpu time: 29032 real time: 29013 gc time: 400
+100
+cpu time: 290200 real time: 290000 gc time: 3964
+1
+cpu time: 2804 real time: 2804 gc time: 32
+10
+cpu time: 28156 real time: 28137 gc time: 420
+100
+cpu time: 282820 real time: 282625 gc time: 3872
+1
+cpu time: 2800 real time: 2797 gc time: 52
+10
+cpu time: 28116 real time: 28097 gc time: 436
+100
+cpu time: 283044 real time: 282857 gc time: 3892

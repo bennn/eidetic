@@ -1,0 +1,42 @@
+1
+cpu time: 11464 real time: 11449 gc time: 80
+10
+cpu time: 113972 real time: 113878 gc time: 120
+100
+cpu time: 1140600 real time: 1139664 gc time: 416
+1
+cpu time: 11520 real time: 11508 gc time: 76
+10
+cpu time: 115000 real time: 114910 gc time: 108
+100
+cpu time: 1148524 real time: 1147618 gc time: 400
+1
+cpu time: 11456 real time: 11448 gc time: 76
+10
+cpu time: 113292 real time: 113195 gc time: 124
+100
+cpu time: 1132820 real time: 1131878 gc time: 412
+1
+cpu time: 11644 real time: 11633 gc time: 76
+10
+cpu time: 115232 real time: 115139 gc time: 92
+100
+cpu time: 1151236 real time: 1150326 gc time: 396
+1
+cpu time: 11476 real time: 11467 gc time: 84
+10
+cpu time: 114616 real time: 114523 gc time: 92
+100
+cpu time: 1145056 real time: 1144104 gc time: 436
+1
+cpu time: 11584 real time: 11574 gc time: 100
+10
+cpu time: 114608 real time: 114513 gc time: 112
+100
+cpu time: 1146620 real time: 1145719 gc time: 400
+1
+cpu time: 11508 real time: 11497 gc time: 76
+10
+cpu time: 117468 real time: 117375 gc time: 120
+100
+cpu time: 1176548 real time: 1175597 gc time: 420

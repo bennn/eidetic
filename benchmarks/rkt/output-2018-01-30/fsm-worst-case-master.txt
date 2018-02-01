@@ -1,0 +1,31 @@
+1
+cpu time: 876 real time: 876 gc time: 216
+10
+cpu time: 5952 real time: 5950 gc time: 188
+20
+1
+cpu time: 856 real time: 856 gc time: 180
+10
+cpu time: 6092 real time: 6086 gc time: 160
+20
+1
+cpu time: 852 real time: 849 gc time: 176
+10
+1
+cpu time: 880 real time: 880 gc time: 216
+10
+cpu time: 5964 real time: 5960 gc time: 156
+1
+cpu time: 844 real time: 842 gc time: 184
+10
+1
+cpu time: 868 real time: 865 gc time: 184
+10
+cpu time: 6196 real time: 6189 gc time: 164
+20
+1
+cpu time: 908 real time: 908 gc time: 212
+10
+cpu time: 6344 real time: 6338 gc time: 228
+20
+cpu time: 12448 real time: 12438 gc time: 200

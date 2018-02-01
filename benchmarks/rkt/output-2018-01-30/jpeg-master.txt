@@ -1,0 +1,42 @@
+1
+cpu time: 824 real time: 824 gc time: 144
+10
+cpu time: 7076 real time: 7073 gc time: 364
+100
+cpu time: 70520 real time: 70473 gc time: 3788
+1
+cpu time: 836 real time: 832 gc time: 140
+10
+cpu time: 7156 real time: 7151 gc time: 408
+100
+cpu time: 71272 real time: 71225 gc time: 3956
+1
+cpu time: 796 real time: 796 gc time: 104
+10
+cpu time: 7072 real time: 7067 gc time: 412
+100
+cpu time: 70444 real time: 70399 gc time: 3876
+1
+cpu time: 796 real time: 796 gc time: 104
+10
+cpu time: 7056 real time: 7048 gc time: 376
+100
+cpu time: 70156 real time: 70109 gc time: 3552
+1
+cpu time: 804 real time: 802 gc time: 104
+10
+cpu time: 7136 real time: 7134 gc time: 368
+100
+cpu time: 71136 real time: 71092 gc time: 3712
+1
+cpu time: 828 real time: 827 gc time: 144
+10
+cpu time: 7096 real time: 7092 gc time: 396
+100
+cpu time: 70660 real time: 70615 gc time: 3932
+1
+cpu time: 832 real time: 830 gc time: 140
+10
+cpu time: 7156 real time: 7151 gc time: 432
+100
+cpu time: 71276 real time: 71230 gc time: 3948
