@@ -64,11 +64,11 @@
 
 ;(require/typed contract-profile [contract-profile-thunk (-> (-> Void) Void)])
 ;(contract-profile-thunk main)
-;;(time (main))
 
-(for ((LOOP (in-list '(1 10 100 500))))
+#;(for ((LOOP (in-list '(1 10 100 500))))
   (collect-garbage 'major)
   (collect-garbage 'major)
   (collect-garbage 'major)
   (displayln LOOP)
   (time (begin (for ((_ (in-range LOOP))) (main)) (collect-garbage 'major))))
+(time (main))

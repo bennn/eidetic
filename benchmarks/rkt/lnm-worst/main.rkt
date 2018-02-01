@@ -47,10 +47,10 @@
 ;; (time (main "base/data/echo.rktd")) ;; 93ms
 ;; (time (main "base/data/sieve.rktd")) ;; 90ms
 ;; (time (main "base/data/gregor.rktd")) ;; 13203ms
-;; (time (main "base/data/suffixtree.rktd")) ;; 143ms
+(time (main "base/data/suffixtree.rktd")) ;; 143ms
 
 ;; 2018-01-30: originally (time (main "base/data/suffixtree.rktd"))
-(for ((LOOP (in-list '(1 10 100 500))))
+#;(for ((LOOP (in-list '(1 10 100 500))))
   (collect-garbage 'major)
   (collect-garbage 'major)
   (collect-garbage 'major)

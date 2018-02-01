@@ -14,9 +14,10 @@
 
 ;;(time (main 16 3))
 
-(for ((LOOP (in-list '(1 10 100 500))))
+#;(for ((LOOP (in-list '(1 10 100 500))))
   (collect-garbage 'major)
   (collect-garbage 'major)
   (collect-garbage 'major)
   (displayln LOOP)
   (time (begin (for ((_ (in-range LOOP))) (main 16 3)) (collect-garbage 'major))))
+(time (main 16 3))

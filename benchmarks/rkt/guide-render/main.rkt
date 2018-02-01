@@ -10,9 +10,10 @@
 
 ;;(time (render-guide))
 
-(for ((LOOP (in-list '(1 10 100 500))))
+#;(for ((LOOP (in-list '(1 10 100 500))))
   (collect-garbage 'major)
   (collect-garbage 'major)
   (collect-garbage 'major)
   (displayln LOOP)
   (time (begin (for ((_ (in-range LOOP))) (render-guide)) (collect-garbage 'major))))
+(time (render-guide))

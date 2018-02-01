@@ -49,10 +49,10 @@
     (go (inf-loop-player 99))))
 
 ;; 2018-01-30: original was 10 iters
-(for ((LOOP (in-list '(1 10 100 500))))
+#;(for ((LOOP (in-list '(1 10 100 500))))
   (collect-garbage 'major)
   (collect-garbage 'major)
   (collect-garbage 'major)
   (displayln LOOP)
   (time (begin (main LOOP) (collect-garbage 'major))))
-#;(time (main 10))
+(time (main 10))

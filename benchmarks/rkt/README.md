@@ -5,7 +5,6 @@ Simple benchmarks for space-efficient contracts.
 
 ## TODO 2018-02-01
 - investigate trie-vector
-- plot LOOPS output
 - ???
 
 ## TODO 2018-01-30
@@ -14,8 +13,6 @@ Simple benchmarks for space-efficient contracts.
 ## TODO 2018-01-20
 - fsmoo definitely a problem, it's SLOW and slower on racket-contract
 
-## TODO 2017-12-14
-- prepare to get GTP benchmark samples
 
 - - -
 

@@ -5,7 +5,7 @@
 
 (define-syntax-rule (run-bubble the-mode chaperone?)
   (...
-   (begin
+   (let ()
      ;; Adjust the last id in the following form to select the mode,
      ;; picking one of the following:
      ;;  plain unsafe unsafe*

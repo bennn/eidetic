@@ -46,10 +46,10 @@
          (error "bad input")]))
 
 ;; (time (main SMALL_TEST)) ; 66ms
-;;(time (main LARGE_TEST)) ; 340ms
+(time (main LARGE_TEST)) ; 340ms
 
 ;; 2018-01-30: originally (main LARGE_TEST)
-(for ((LOOP (in-list '(1 10 100 500))))
+#;(for ((LOOP (in-list '(1 10 100 500))))
   (collect-garbage 'major)
   (collect-garbage 'major)
   (collect-garbage 'major)
