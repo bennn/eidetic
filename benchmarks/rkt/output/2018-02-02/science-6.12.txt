@@ -1,0 +1,7 @@
+cpu time: 10112 real time: 10102 gc time: 1892
+cpu time: 10248 real time: 10237 gc time: 2432
+cpu time: 10000 real time: 9994 gc time: 1896
+cpu time: 10044 real time: 10034 gc time: 1916
+cpu time: 9960 real time: 9951 gc time: 1896
+cpu time: 10848 real time: 10836 gc time: 2420
+cpu time: 10300 real time: 10287 gc time: 1908

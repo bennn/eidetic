@@ -1,0 +1,7 @@
+cpu time: 25108 real time: 25091 gc time: 204
+cpu time: 25800 real time: 25781 gc time: 212
+cpu time: 25356 real time: 25336 gc time: 200
+cpu time: 25536 real time: 25517 gc time: 192
+cpu time: 25068 real time: 25052 gc time: 184
+cpu time: 25652 real time: 25633 gc time: 168
+cpu time: 25504 real time: 25485 gc time: 192

@@ -1,0 +1,14 @@
+cpu time: 6920 real time: 6915 gc time: 0
+cpu time: 6920 real time: 6915 gc time: 0
+cpu time: 6780 real time: 6774 gc time: 0
+cpu time: 6780 real time: 6774 gc time: 0
+cpu time: 6772 real time: 6764 gc time: 0
+cpu time: 6772 real time: 6765 gc time: 0
+cpu time: 6772 real time: 6766 gc time: 0
+cpu time: 6772 real time: 6766 gc time: 0
+cpu time: 6760 real time: 6751 gc time: 0
+cpu time: 6760 real time: 6751 gc time: 0
+cpu time: 6760 real time: 6755 gc time: 0
+cpu time: 6760 real time: 6756 gc time: 0
+cpu time: 6768 real time: 6759 gc time: 0
+cpu time: 6768 real time: 6760 gc time: 0
