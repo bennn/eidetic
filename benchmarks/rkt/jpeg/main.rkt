@@ -1,18 +1,15 @@
 #lang racket/base
-(require "jpeg.rkt" racket/port)
+(require "jpeg.rkt" (only-in racket/file file->bytes))
 
-(define (main test-file)
-  (define j1 (read-jpeg test-file))
+(define (main bytes)
+  (define outb (open-output-bytes))
+  (define j1 (read-jpeg bytes))
   (void
-    (parameterize ([current-output-port (open-output-nowhere)])
-      (write-jpeg (current-output-port) j1))))
+    (rgb->jpeg (jpeg->rgb j1))
+    (let-values (((_a _b _c) (jpeg-dimensions-and-exif j1))) (void))
+    (write-jpeg outb j1)
+    (close-output-port outb)))
 
-;;(time (main "test.jpg"))
+(define bytes (file->bytes "test.jpg"))
 
-#;(for ((LOOP (in-list '(1 10 100 500))))
-  (collect-garbage 'major)
-  (collect-garbage 'major)
-  (collect-garbage 'major)
-  (displayln LOOP)
-  (time (begin (for ((_ (in-range LOOP))) (main "test.jpg")) (collect-garbage 'major))))
-(time (main "test.jpg"))
+(time (main bytes))
