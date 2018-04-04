@@ -14,6 +14,9 @@
   gtp-plot/typed-racket-info
   (only-in gtp-plot/plot
            samples-plot
+           *SAMPLE-COLOR*
+           *OVERHEAD-PLOT-WIDTH*
+           *OVERHEAD-PLOT-HEIGHT*
            overhead-plot)
   gtp-util
   racket/runtime-path)
@@ -140,19 +143,27 @@
         (define tr* (map make-typed-racket-info (list rc-data r6-data)))
         (cons bm (map max-overhead tr*)))))
 
-  (define (plot-samples)
+  (define (plot-samples [type2? #false])
     (parameterize ((samples? #true))
       (for ((bm (in-list bm*))
-            #:when (string-contains? bm "quad"))
+            #:when (or (string-contains? bm "gregor") (string-contains? bm "quadMB")))
         (define-values [rc-out* r6-out*] (benchmark->out* bm))
         (define rc-data* (map just-cpu-time rc-out*))
         (define r6-data* (map just-cpu-time r6-out*))
         (define si* (list (mks bm rc-data*) (mks bm r6-data*)))
-        (define p (samples-plot si*))
-        (save-pict (format "~a.png" bm) p)
+        (if type2?
+          (for ([si (in-list si*)]
+                [c (in-naturals 3)])
+            (parameterize ([*SAMPLE-COLOR* c]
+                           [*OVERHEAD-PLOT-WIDTH* 400]
+                           [*OVERHEAD-PLOT-HEIGHT* 200])
+              (save-pict (format "~a-~a.png" bm c) (samples-plot si))))
+          (let ([p (samples-plot si*)])
+            (save-pict (format "~a.png" bm) p)))
         (void))))
 
   ;(plot-overheads)
   ;(max-overheads)
-  (plot-samples)
+  ;(plot-samples)
+  (plot-samples #true)
   (void))
