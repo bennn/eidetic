@@ -2,7 +2,7 @@
 
 (require "pfds-trie.rkt")
 
-(define ITERS 100)
+(define ITERS 1000)
 
 (define (main)
   (for/fold ([t (trie '((0)))])
